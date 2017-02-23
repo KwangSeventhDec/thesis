@@ -1,0 +1,32 @@
+<ion-view view-title="{{q.question_title}}">
+<ion-header-bar class="bar-positive" align-title="center">
+    <a href="#/tab/takequiz" class="button icon-left ion-chevron-left button-clear">Back</a>
+    <h1 class="title"> True False Question </h1>
+</ion-header-bar>
+  
+<ion-content class="padding" ng-controller="quizdetailCtrl">
+    <!-- Show question -->
+    <div class="list card padding" >
+          <h3> &nbsp; title : {{q.question_title}} </h3>
+          <hr>
+          <h4> <p ng-bind-html="q.question_detail"></p> </h4>
+    </div>
+
+    <!-- Answer radio button-->
+      <button class="button button-balanced">
+        <i class="ion-checkmark"></i>True
+      </button>
+      <button class="button button-assertive">
+        <i class="ion-close"></i>False
+      </button>
+
+    <!-- Add space -->
+    <div class="spacer" style="height: 18px;"></div>
+    
+    <!-- confirm button -->
+    <button class="button button-positive button-block" ng-click="postans()" >
+      Confirm
+    </button>
+
+  </ion-content>
+</ion-view>

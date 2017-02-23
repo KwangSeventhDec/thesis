@@ -1,0 +1,32 @@
+<ion-header-bar class="bar-positive" align-title="center">
+    <h1 class="title"> Subject </h1>
+</ion-header-bar>
+
+    <ion-content padding="true" class="has-header" style="background: url(img/bg/bg2.jpg)">
+
+        <form class="list">
+            <div class="spacer" style="height: 100px;"></div>
+            <!-- <label class="item item-select" name="subject" ng-controller="subCtrl" >
+                <span class="input-label">select subject</span>
+                <select>
+                    <option  ng-repeat="x in names" ng-model="mySelect" ng-change="setSubject(mySelect)"> 
+                        {{x.subject}} 
+                    </option>
+                </select>
+            </label> -->
+            <label class="item item-select" name="subject" ng-controller="subCtrl" >
+                <span class="input-label">select subject</span>
+                <select 
+                    ng-model="mySelect" 
+                    ng-options="x.subject for x in names" 
+                    ng-change="setSubject(mySelect)">
+                </select>
+            </label>
+        </form>
+
+        <!-- ปุ่มเลือก -->
+        <a href="#/tab/dash" class="button button-positive button-block ">Select</a>
+        
+        <!-- + -->
+       <button class="button button-positive button-clear button-block  icon ion-android-add" ng-click="addsub()" ng-controller="subCtrl"></button>
+    </ion-content>

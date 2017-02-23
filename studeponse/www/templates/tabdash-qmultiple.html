@@ -1,0 +1,32 @@
+<ion-view>
+<ion-header-bar class="bar bar-header bar-balanced" align-title="center">
+    <h1 class="title"> Mutiple choice detail </h1>
+</ion-header-bar>
+  
+<ion-content class="padding">
+    <!-- Show question -->
+    <div class="list card padding" >
+          <h3> &nbsp; title : {{q.title}} </h3>
+          <hr>
+          <h4> <p ng-bind-html="q.description"></p> </h4>
+    </div>
+
+    <!-- Answer radio button-->
+    <div >
+          <ion-radio  
+          class="item-text-wrap"
+          ng-repeat="qd in quizsChoice" 
+          ng-if="qd.poll_id == q.id"
+          ng-click="setchoiceNumber(qd.id)">
+                {{qd.label}}
+    </div>
+
+    <!-- Add space -->
+    <div class="spacer" style="height: 18px;"></div>
+    
+    <!-- confirm button -->
+    <button class="button button-positive button-block" ng-model="q.id" ng-click="checkAns()">
+      Confirm
+    </button>
+  </ion-content>
+</ion-view>

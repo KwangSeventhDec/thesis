@@ -1,0 +1,29 @@
+<ion-view view-title="{{e.question_title}}">
+<ion-header-bar class="bar-positive" align-title="center">
+    <a href="#/tab/takequiz" class="button icon-left ion-chevron-left button-clear">Back</a>
+    <h1 class="title"> Essay Test detail </h1>
+</ion-header-bar>
+  
+<ion-content class="padding" ng-controller="quizdetailCtrl">
+      <!-- Show question -->
+      <div class="list card padding" >
+          <h3> &nbsp; title : {{e.question_title}} </h3>
+          <hr>
+          <h4> <p ng-bind-html="e.question_detail"></p> </h4>
+      </div>
+
+      <!-- Answer box -->
+      <h3><span class="input-label"> Add your answer here :)  </span></h3>
+      <label class="item item-input">
+          <textarea placeholder="Your answer..." ng-model="ans_essay" name="ans_essay"></textarea>
+      </label>
+      
+    <!-- Add space -->
+    <div class="spacer" style="height: 18px;"></div>
+    
+    <!-- confirm button -->
+    <button class="button button-positive button-block" ng-click="checkEssay()" ng-model="e.question_id">
+      Confirm
+    </button>
+  </ion-content>
+</ion-view>

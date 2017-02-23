@@ -1,0 +1,100 @@
+<ion-view view-title="Webboard">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <h1 class="title"> Webboard </h1>
+    <button class="button button-assertive" ng-click="newpost()">
+     <!-- ng-click="refresh()"  --> 
+         <i class="icon ion-compose"></i> 
+    </button>
+  </ion-header-bar>
+    <ion-content class="scroll-content ionic-scroll has-header" padding="true" style="background: url(img/bg/bg2.jpg)">  
+          <ion-refresher on-refresh="refreshItems()"> </ion-refresher>
+              <div class="spacer" style="height: 18px;"></div>
+          <form name="postForm">
+             <div class="list card" ng-repeat="key in board | orderBy:key.id:true" ng-controller="boardCtrl" ng-hide="myModel">  
+                <div class="item item-avatar">  
+                   <img ng-src="http://ionicframework.com/img/ionic-logo-blog.png">
+                    <div class="row">
+                      <div class="col">
+                        <h2>{{key.title}}</h2>
+                      </div>
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col">
+                        <button 
+                          class="button button-icon icon item-icon-right"  
+                          ng-if="key.author_id == userPro.id"
+                          ng-value="{{key.id}}"
+                          ng-click="goBackdeletePost()"
+                          > X
+                        </button>
+                      </div>
+                    </div>
+                   <span> <h2>By : {{key.author_id}}</h2></span>
+                   <span> <p>Create time : {{key.create_time | date:'dd-MM-yyyy h:mma Z' : '+0700'}}</p></span>
+                </div>  
+                <div class="item item-body">  
+                    <p>{{key.content}}</p>  
+                    <p>tag : {{key.tags}}</p>
+                </div> 
+              
+              <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+                    <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                    Comments
+              </ion-item>
+
+              <div ng-repeat="ment in comments" 
+                    ng-if="ment.post_id == key.id"
+                    ng-controller="boardCtrl">
+                <ion-item class="item-accordion"
+                    ng-show="isGroupShown(group)">
+
+                    <div class="row" ng-hide="myVar">
+                      {{ment.author}}&nbsp;:&nbsp;{{ment.content}}
+                      <div class="col"></div>
+                      <button 
+                          class="button button-icon ion-close-round"  
+                          ng-if="ment.author == userPro.username"
+                          ng-value="{{ment.id}}"
+                          ng-click="goBackdeletement()">
+                      </button>
+                  </div> 
+                </ion-item>
+              </div>                  
+ 
+<!--               <span ng-if="content_comment.length == 0" ng-show="{{err_ment}}"></span> -->
+              
+              <div class="item item-input-inset">
+
+                      <span><i class="ion-chatbox-working"></i> : &nbsp;</span>
+                      <label class="item-input-wrapper"> 
+                        <input type="text" placeholder="Your opinion..." 
+                          name="content_comment" 
+                          ng-model="content_comment" 
+                          required>
+
+                      </label>
+                      <button 
+                          type="submit" 
+                          name="post_id" 
+                          class="button button-icon icon ion-android-send" 
+                          ng-value="{{key.id}}" 
+                          ng-click="check()"> 
+                      </button><br>
+
+                      
+              </div> 
+
+            </div> 
+            <!-- <tt>{{postForm.content_comment.$error}}</tt> -->
+        </form>
+
+
+
+    </ion-content>
+</ion-view>

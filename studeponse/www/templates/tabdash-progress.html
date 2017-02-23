@@ -1,0 +1,61 @@
+<ion-view view-title="Quiz">
+<ion-header-bar class="bar-positive" align-title="center">
+    <a href="#/tab/dash" class="button icon-left ion-chevron-left button-clear">Back</a>
+    <h1 class="title"> Your answer </h1>
+</ion-header-bar>
+  <ion-content>
+    <ion-refresher on-refresh="refreshAns()"> </ion-refresher>
+    
+    <div class="list" ng-controller="quizCtrl">
+      <ion-item class="bar bar-balanced">  
+        <h2> Multiple Choice Test</h2>
+      </ion-item>
+      <ion-item 
+        class=" item-icon-right"  
+        ng-repeat="a in quizs | orderBy:'id'"
+        ng-if="a.status == 1 && a.type == 0 && a.subject_id == sub.subject_id" >
+        <h2> title : {{a.title}} </h2>
+        <h2>คำตอบ : 
+          <div
+            ng-repeat="qa in quizAns"
+            ng-if="a.id == qa.poll_id && userPro.id == qa.user_id"
+            ng-if="qa.choice_id == quizsChoice.id">
+            <!-- {{qa.choice_id}} -->
+            <p 
+            ng-controller="progressCtrl"  
+            ng-repeat="x in showAns"
+            ng-if="x.id == qa.choice_id">
+            {{x.label}}
+          </p>
+          </div>
+        </h2>
+      </ion-item>
+      
+      <div class="spacer" style="height: 60px;"></div>
+      
+      
+      <ion-item class="bar bar-header bar-calm">  
+        <h2> Essay Test</h2>
+      </ion-item>
+      <ion-item class=" item-icon-right"  
+        ng-repeat="e in essay | orderBy:'question_id'"
+        ng-if="e.active == 1 && e.type == 1 && e.subject_id == sub.subject_id">
+        <h2> title : {{e.question_title}}</h2>
+        <h2>คำตอบ : 
+          <div
+            ng-repeat="qa in showEssay"
+            ng-if="e.question_id == qa.question_id && userPro.id == qa.user_id">
+            {{qa.essay}}
+
+          </div>
+        </h2>
+        <!-- <p  ng-show="item.c5"> <i class="icon ion-checkmark-round"  ></i><p> -->
+      </ion-item>
+
+
+
+      <div class="spacer" style="height: 60px;"></div>
+    </div>
+
+  </ion-content>
+</ion-view>

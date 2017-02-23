@@ -1,0 +1,51 @@
+<ion-view view-title="Quiz">
+<ion-header-bar class="bar-positive" align-title="center">
+    <a href="#/tab/dash" class="button icon-left ion-chevron-left button-clear">Back</a>
+    <h1 class="title" ng-controller="subCtrl"> ข้อสอบวิชา : {{sub.subject}}</h1>
+</ion-header-bar>
+  <ion-content>
+    <ion-refresher on-refresh="refreshQuiz()"> </ion-refresher>
+    
+    <div class="list" ng-controller="quizCtrl">
+      <ion-item class="bar bar-balanced">  
+        <h2> Multiple Choice Test</h2>
+      </ion-item>
+      <ion-item class=" item-icon-right"  
+        ng-repeat="q in quizs | orderBy:'id'"
+        ng-if="q.status == 1 && q.type == 0 && q.subject_id == sub.subject_id" 
+        backgruond href="#/tab/takequiz/qmultiple/{{q.id}}"
+        ng-model="modal">
+            <h2> title : {{q.title}} </h2>
+      </ion-item>
+      
+      <div class="spacer" style="height: 60px;"></div>
+      
+      
+      <ion-item class="bar bar-header bar-calm">  
+        <h2> Essay Test</h2>
+      </ion-item>
+      <ion-item class=" item-icon-right"  
+        ng-repeat="e in essay | orderBy:'question_id'"
+        ng-if="e.active == 1 && e.type == 1 && e.subject_id == sub.subject_id" 
+        backgruond href="#/tab/takequiz/qessay/{{e.question_id}}">
+        <h2> title : {{e.question_title}}</h2>
+      </ion-item>
+
+      <div class="spacer" style="height: 60px;"></div>
+
+      <!-- True False -->
+      <!-- <ion-item class="item-stable">  
+        <h2> True False Question</h2>
+      </ion-item>
+       <ion-item class=" item-icon-right"  
+        ng-repeat="q in quizs | orderBy:'id'"
+        ng-if="q.status == 1 && q.type == 2" 
+        backgruond href="#/tab/takequiz/qmultiple/{{q.id}}">
+        <h2> title : {{q.title}}</h2>
+        
+      </ion-item> -->
+    
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,39 @@
+<ion-view cache-view="false">
+<ion-content padding="true" style="background: url(img/bg/bg2.jpg)" >
+        <div class="spacer" style="width: 300px; height: 100px;"></div>
+        
+        <!-- <form class="list" ng-app="Authentication" ng-controller="loginCtrl"> -->
+        <form class="list" ng-controller="loginCtrl" name="loginForm">
+            <h2 style="color: #F5F5F5;" align="center"> <span class="icon-left ion-ios-bookmarks"></span> welcome! </h2>
+            <div class="list">
+
+                <!-- <div ng-show="error" class="alert alert-danger"> 
+                    <span class="ion-alert-circled"> {{error}} </span>
+                </div> -->
+
+                <label class="item item-input" padding="true">
+                   <input type="text" name="username" id="username" class="form-control" ng-model="username" required >
+                </label>
+                <label class="item item-input" padding="true">
+                    <input type="password" name="password" id="password" class="form-control" ng-model="password" required >
+                </label>
+                
+                <!-- Login -->
+                <label class="item">
+                     <button type="submit" ng-click="signIn()" ng-disabled="form.$invalid || dataLoading" class="button button-positive button-block">Login</button>
+                </label>
+            </div>
+            <div class="spacer" style="height: 40px;"></div>
+            
+            
+
+            <!-- create -->
+            <div align="center">
+            <button class="button button-clear button-royal" ng-click="gotoRegis1()" style="font-size: 20px;">
+                <i class="ion-person-add"></i>
+              Create new account
+            </button>
+        </div>
+        </form>
+</ion-content>
+</ion-view>

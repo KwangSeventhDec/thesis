@@ -1,0 +1,40 @@
+<ion-view view-title="New Post">
+  <ion-header-bar class="bar-positive" align-title="center">
+    <a href="#/tab/webboard" class="button icon-left ion-chevron-left button-clear">Back</a>
+    <h1 class="title"> New Post </h1>
+  </ion-header-bar>
+
+
+     <ion-content padding="true" scroll="false" class="has-header" style="background: url(img/bg/bg2.jpg)">
+        <!-- spacer -->
+        <div class="spacer" style="width: 300px; height: 28px;"></div>
+        <h3 align="center" style="color: #0066CC;"> 
+            <span class="icon-left ion-edit" ></span> 
+            New Post 
+        </h3>
+
+        <!-- New Post -->
+        <form class="list">
+            <ion-list>
+                <label class="item item-input">
+                  <span class="input-label"> Title </span>
+                  <input type="text" placeholder="title..." ng-model="post_title" name="title" required>
+                </label>
+
+                <h3 style="color: #0066CC;"> Add content here
+                </h3>
+                <label class="item item-input">
+                    <textarea placeholder="Content..." ng-model="post_content" name="content" required></textarea>
+                </label>
+                 <label class="item item-input">
+                    <span class="input-label"> Tag </span>
+                    <input type="text" placeholder="eg. Yii,web application...." ng-model="post_tag" name="post_tag"required>
+                </label>
+            </ion-list>
+            <div class="spacer" style="width: 300px; height: 18px;"></div>
+            
+            <!-- submit -->
+            <button class="button button-positive button-block" ng-click="sendPost()"  ng-controller="boardCtrl">Submit </button>
+        </form>
+    </ion-content>
+</ion-view>

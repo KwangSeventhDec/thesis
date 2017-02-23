@@ -1,0 +1,88 @@
+<ion-view view-title="Account">
+<ion-header-bar class="bar-positive" align-title="center">
+  <h1 class="title"> My profile </h1>
+</ion-header-bar>
+  <ion-content padding="true">
+    <ion-refresher on-refresh="refreshAccount()"> </ion-refresher>
+    <ion-list >
+
+        <!-- <div class="item" ng-controller="CameraCtrl">
+              <div class="col text-center">
+                <div style="text-align: center;">
+                  <img ng-src="{{pictureUrl}}" class="icon ion-image" style="border-radius: 100px; vertical-align: middle; width: 200px; height: 200px;"></img>
+                </div>
+              </div>
+              <p>
+                <div class="col text-center">
+                <button class="button icon ion-camera" ng-click="takePicture()"></button>
+                <button class="button icon ion-images" ng-click="choosePicture()"></button>  
+                </div>
+              </p>
+      </div> -->
+        <div class="spacer" style="height: 18px;"></div>
+        <form class="list" style="border-radius: 15px;">
+            <ion-list>
+                <h4>Name :&nbsp; {{userPro.firstname + ' ' + userPro.lastname}}</h4>
+                <h4>Press <i class="icon ion-checkmark"></i> to edit your detail</h4>
+                <div class="row">
+                  <div class="col col-80">
+                    <label class="item item-input" name="form-regis">
+                      <span class="input-label">Password</span>
+                      <input type="password" placeholder="Password..." ng-model="change.password">
+                    </label>
+                  </div>
+                  <div class="col">
+                      <button class="button button-positive icon ion-checkmark" ng-show="change.password.length" ng-click="updatePass()" ng-value="{{userPro.id}}"></button>&nbsp;
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-80">
+                      <label class="item item-input" name="form-regis">
+                        <span class="input-label">E-mail </span>
+                        <input type="email" placeholder="{{userPro.email}}" ng-model="change.email">
+                      </label>
+                  </div>
+                  <div class="col">
+                      <button class="button button-positive ion-checkmark" ng-show="change.email.length" ng-click="updateMail()" ng-value="{{userPro.id}}"></button>&nbsp;
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-80">
+                      <label class="item item-input" name="form-regis">
+                          <span class="input-label">Firstname</span>
+                          <input type="text" placeholder="{{userPro.firstname}}" ng-model="change.firstname">
+                      </label>
+                  </div>
+                  <div class="col">
+                      <button class="button button-positive icon ion-checkmark" ng-show="change.firstname.length" ng-click="updateFirstname()" ng-value="{{userPro.id}}"></button>&nbsp;
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-80">
+                      <label class="item item-input" name="form-regis">
+                          <span class="input-label">Lastname</span>
+                          <input type="text" placeholder="{{userPro.lastname}}" ng-model="change.lastname">
+                      </label>
+                  </div>
+                  <div class="col">
+                      <button class="button button-positive icon ion-checkmark" ng-show="change.lastname.length" ng-click="updateLastname()" ng-value="{{userPro.id}}"></button>&nbsp;
+                  </div>
+                </div>
+            </ion-list>
+            <div class="spacer" style="width: 300px; height: 15px;"></div>
+
+            <!-- Change subject-->
+            <!-- <button  class="button button-block button-dark" ng-click="changeSub()" ng-controller="AccountCtrl" href="#/login">
+              <i class="ion-arrow-swap"></i>
+              change subject  
+            </button> -->
+
+            <!-- log out -->
+            <button  class="button button-block button-assertive" ng-click="logout()" ng-controller="AccountCtrl" href="#/login">
+              <i class="ion-log-out"></i>
+              Log out 
+            </button>
+        </form>
+    </ion-list>
+  </ion-content>
+</ion-view>
